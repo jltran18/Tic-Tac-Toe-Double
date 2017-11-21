@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #layout {
+            position: absolute;
+            margin: 0 20%;
+            font-family: Arial, sans-serif;
+        }
+
+        #separator {
+            border: 2px solid black;
+            position: absolute;
+            height: 80%;
+            left: 52%;
+        }
+
+        #layout2 {
+            position: absolute;
+            margin: 0 55%;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-left: 112px;
+        }
+
+        #table1, #table2 {
+            background-color: #8DC0FF;
+            width: 400px;
+            height: 400px;
+            position: relative;
+        }
+
+        #table1 .cell, #table2 .cell {
+            width: 120px;
+            height: 120px;
+            display: inline-block;
+            position: relative;
+            transform: translateX(14px) translateY(14px);
+        }
+
+        #table1 .hlineOne, #table2 .hlineOne {
+            left: 10px;
+            top: 135px;
+            position: absolute;
+            width: 95%;
+            border: 2px solid black;
+        }
+
+        #table1 .hlineTwo, #table2 .hlineTwo {
+            left: 10px;
+            top: 262px;
+            position: absolute;
+            width: 95%;
+            border: 2px solid black;
+        }
+
+        #table1 .vlineOne, #table2 .vlineOne {
+            left: 135px;
+            top: 10px;
+            position: absolute;
+            height: 95%;
+            border: 2px solid black;
+        }
+
+        #table1 .vlineTwo, #table2 .vlineTwo {
+            left: 262px;
+            top: 10px;
+            position: absolute;
+            height: 95%;
+            border: 2px solid black;
+        }
+
+        #table1 .xPlayer, #table2 .xPlayer {
+            background: firebrick;
+            height: 115px;
+            width: 20px;
+            transform: rotate(135deg) translateX(-35px) translateY(-42px);
+            display: inline-block;
+            position: absolute;
+
+        }
+        #table1 .xPlayer:after, #table2 .xPlayer:after {
+            background: firebrick;
+            content: "";
+            height: 20px;
+            left: -50px;
+            position: absolute;
+            top: 48px;
+            width: 115px;
+        }
+
+        #table1 .oPlayer, #table2 .oPlayer {
+            width: 105px;
+            height: 105px;
+            background-color: #FFDA45;
+            border-radius: 60px;
+            position: absolute;
+            display: inline-block;
+            transform: translateX(10px) translateY(10px);
+        }
+
+        #table1 .oPlayer:after, #table2 .oPlayer:after {
+            width: 60px;
+            height: 60px;
+            content: "";
+            border-radius: 60px;
+            background-color: #8DC0FF;
+            border: 2px solid #FFDA45;
+            position: absolute;
+            top: 22px;
+            left: 21px;
+        }
+
+        .playerTurn {
+            margin-top: 30px;
+            margin-right: 35px;
+            display: inline-block;
+            font-size: 25px;
+            font-weight: bold;
+            color: darkcyan;
+        }
+
+        #layout .restart, #layout2 .restart {
+            cursor: pointer;
+            float: right;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: darkblue;
+
+            border: 2px solid darkgray;
+            background-color: darkgray;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+
+        #layout .restart:hover, #layout2 .restart:hover  {
+            background-color: lightgray;
+            border: 2px solid lightgray;
+            color: cornflowerblue;
+        }
+
+        .winner {
+            width: 320px;
+            height: 20px;
+            color: red;
+            font-size: 30px;
+            position: absolute;
+            display: inline-block;
+            transform: translateY(85px) translateX(-150px);
+        }
+
+        .sign {
+            display: none;
+        }
+
+        .winColor {
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="layout">
+    <h1>Tic-Tac-Toe</h1>
+    <div id="table1">
+        <div class="c0 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c1 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c2 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c3 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c4 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c5 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c6 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c7 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c8 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <span class="hlineOne"></span>
+        <span class="hlineTwo"></span>
+        <span class="vlineOne"></span>
+        <span class="vlineTwo"></span>
+    </div>
+    <span class="playerTurn"></span>
+    <span class="winner"></span>
+    <span class="restart btn1">Restart</span>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./TTT3.js"></script>
+</div>
+
+<span id="separator"></span>
+
+<div id="layout2">
+    <h1>Tic-Tac-Toe</h1>
+    <div id="table2">
+        <div class="c0 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c1 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c2 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c3 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c4 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c5 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c6 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c7 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <div class="c8 cell">
+            <div class="sign xPlayer oPlayer"></div>
+        </div>
+        <span class="hlineOne"></span>
+        <span class="hlineTwo"></span>
+        <span class="vlineOne"></span>
+        <span class="vlineTwo"></span>
+    </div>
+    <span class="playerTurn"></span>
+    <span class="winner"></span>
+    <span class="restart">Restart</span>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="./index.js"></script>
+</div>
+</body>
+</html>
